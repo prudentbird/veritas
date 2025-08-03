@@ -1,17 +1,14 @@
 import { env } from "~/env";
+import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
-import { api } from "~/convex/_generated/api";
-import { fetchMutation } from "convex/nextjs";
-import type { DefaultJWT } from "next-auth/jwt";
-import NextAuth, { type DefaultSession } from "next-auth";
 import {
   getAddressFromMessage,
   getChainIdFromMessage,
   SIWESession,
   verifySignature,
 } from "@reown/appkit-siwe";
-import Credentials from "next-auth/providers/credentials";
 import { authSchema } from "./schema";
+import Credentials from "next-auth/providers/credentials";
 
 declare module "next-auth" {
   interface Session extends SIWESession {

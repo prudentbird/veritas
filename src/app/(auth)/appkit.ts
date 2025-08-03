@@ -6,7 +6,7 @@ import { siweConfig } from "./config";
 import { createAppKit } from "@reown/appkit/react";
 import { monadTestnet } from "@reown/appkit/networks";
 import { Ethers5Adapter } from "@reown/appkit-adapter-ethers5";
-  
+
 const metadata = {
   name: "Veritas",
   description: "Veritas",

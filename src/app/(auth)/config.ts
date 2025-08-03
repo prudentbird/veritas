@@ -51,7 +51,7 @@ export const siweConfig = createSIWEConfig({
         redirectTo: "/",
       });
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   },
@@ -61,7 +61,7 @@ export const siweConfig = createSIWEConfig({
         redirectTo: "/auth",
       });
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   },

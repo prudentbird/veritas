@@ -1,13 +1,12 @@
 import Logout from "./tmp";
-import Link from "next/link"
+import Link from "next/link";
 import { cache } from "react";
-import Image from "next/image";
 import { auth } from "./(auth)/auth";
 import { Button } from "~/components/ui/button";
 
 const getSession = cache(() => auth());
 
-export default async function Home() {  
+export default async function Home() {
   const session = await getSession();
 
   return (
@@ -17,18 +16,16 @@ export default async function Home() {
           {session ? (
             <Logout />
           ) : (
-            <Link
-              href="/auth"
-            >
-              <Button>
-                Authenticate now
-              </Button>
+            <Link href="/auth">
+              <Button>Authenticate now</Button>
             </Link>
           )}
         </div>
         {session ? (
           <div>
-            <p className="text-center">Authenticated With: <br /> {session?.address}</p>
+            <p className="text-center">
+              Authenticated With: <br /> {session?.address}
+            </p>
           </div>
         ) : (
           <div>

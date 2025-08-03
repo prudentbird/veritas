@@ -15,7 +15,7 @@ const inconsolata = Inconsolata({
 
 export const metadata: Metadata = {
   title: "Veritas",
-  description: "Share the truth about fellow monads!",
+  description: "Share the truth about fellow nads!",
 };
 
 export default function RootLayout({

@@ -38,7 +38,6 @@ export default async function AuthPage() {
           </div>
 
           <div className="w-full max-w-sm flex items-center justify-center">
-    
             <appkit-button />
           </div>
 
