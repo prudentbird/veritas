@@ -3,25 +3,46 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "convex": "convex dev",
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "preview": "next build --turbopack && next start",
+    "lint": "next lint && echo Lint Checks successfully completed!",
+    "lint:fix": "next lint --fix && echo Lint Checks successfully completed!",
+    "typecheck": "tsc --pretty --noEmit && echo Type Checks successfuly completed!",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache && echo Prettier Format successfully completed!",
+    "code-quality": "npm run lint && npm run typecheck && npm run build && echo Code Quality successfully completed!"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
+    "@reown/appkit": "^1.7.17",
+    "@reown/appkit-adapter-ethers5": "^1.7.17",
+    "@reown/appkit-siwe": "^1.7.17",
+    "@t3-oss/env-nextjs": "^0.13.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "convex": "^1.25.4",
+    "ethers": "5.7.2",
+    "lucide-react": "^0.536.0",
+    "next": "^15.4.2-canary.27",
+    "next-auth": "5.0.0-beta.29",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.4.5"
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.0.14"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.4.5",
-    "@eslint/eslintrc": "^3"
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4",
+    "tw-animate-css": "^1.3.6",
+    "typescript": "^5"
   }
 }
