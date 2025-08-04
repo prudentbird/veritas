@@ -10,8 +10,8 @@ import { Ethers5Adapter } from "@reown/appkit-adapter-ethers5";
 const metadata = {
   name: "Veritas",
   description: "Veritas",
-  url: "http://localhost:3000",
-  icons: ["http://localhost:3000/favicon.ico"],
+  url: env.NEXT_PUBLIC_BASE_URL,
+  icons: [env.NEXT_PUBLIC_BASE_URL + "/favicon.ico"],
 };
 
 createAppKit({
