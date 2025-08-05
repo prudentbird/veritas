@@ -66,10 +66,4 @@ export const siweConfig = createSIWEConfig({
       return false;
     }
   },
-  onSignOut: async () => {
-    await signOut({
-      redirect: true,
-      redirectTo: "/",
-    });
-  },
 });

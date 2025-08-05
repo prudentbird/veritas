@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 import type { Session } from "next-auth";
 import { UserBadge } from "./user-badge";
+import { signOut } from "next-auth/react";
 import { useDisconnect } from "@reown/appkit/react";
 import { ChevronLeft, ChevronRight, LockOpen, Loader2 } from "lucide-react";
 
@@ -23,6 +24,10 @@ export const MenuClient = ({
     setIsSigningOut(true);
     try {
       await disconnect();
+      await signOut({
+        redirect: true,
+        redirectTo: "/",
+      });
     } catch (error) {
       console.error("Error during signout:", error);
     } finally {
