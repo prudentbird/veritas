@@ -3,6 +3,7 @@
 import { env } from "~/env";
 import { ReactNode } from "react";
 import { AppKit } from "./(auth)/appkit";
+import { Menu } from "~/components/menu";
 import { SessionProvider } from "next-auth/react";
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 
@@ -13,6 +14,7 @@ const Providers = ({ children }: { children: ReactNode }) => {
     <SessionProvider>
       <ConvexProvider client={convex}>
         <AppKit>{children}</AppKit>
+        <Menu />
       </ConvexProvider>
     </SessionProvider>
   );

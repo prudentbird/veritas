@@ -1,7 +1,6 @@
 import "./globals.css";
 import Providers from "./providers";
 import type { Metadata } from "next";
-import { Menu } from "~/components/menu";
 import { Outfit, Inconsolata } from "next/font/google";
 
 const outfit = Outfit({
@@ -30,7 +29,6 @@ export default function RootLayout({
         className={`${outfit.variable} ${inconsolata.variable} antialiased`}
       >
         <Providers>{children}</Providers>
-        <Menu />
       </body>
     </html>
   );

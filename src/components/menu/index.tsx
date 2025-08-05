@@ -17,7 +17,6 @@ export const Menu = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [isSigningOut, setIsSigningOut] = useState(false);
 
-
   if (!session) {
     return <Auth />;
   }
