@@ -18,11 +18,15 @@ createAppKit({
   adapters: [new Ethers5Adapter()],
   metadata,
   networks: [monadTestnet],
+  enableNetworkSwitch: false,
+  defaultNetwork: monadTestnet,
   projectId: env.NEXT_PUBLIC_PROJECT_ID,
   features: {
     email: false,
     socials: false,
     analytics: false,
+    swaps: false,
+    onramp: false,
   },
   siweConfig: siweConfig,
 });

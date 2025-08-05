@@ -16,6 +16,9 @@
   },
   "dependencies": {
     "@convex-dev/eslint-plugin": "0.0.1-alpha.4",
+    "@dicebear/collection": "^9.2.3",
+    "@dicebear/core": "^9.2.3",
+    "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-slot": "^1.2.3",
     "@reown/appkit": "^1.7.17",
     "@reown/appkit-adapter-ethers5": "^1.7.17",

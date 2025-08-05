@@ -58,7 +58,8 @@ export const siweConfig = createSIWEConfig({
   signOut: async () => {
     try {
       await signOut({
-        redirectTo: "/auth",
+        redirect: true,
+        redirectTo: "/",
       });
       return true;
     } catch {
@@ -67,7 +68,8 @@ export const siweConfig = createSIWEConfig({
   },
   onSignOut: async () => {
     await signOut({
-      redirectTo: "/auth",
+      redirect: true,
+      redirectTo: "/",
     });
   },
 });
