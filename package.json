@@ -29,7 +29,7 @@
     "convex": "^1.25.4",
     "ethers": "5.7.2",
     "lucide-react": "^0.536.0",
-    "next": "^15.4.2-canary.27",
+    "next": "15.4.2-canary.51",
     "next-auth": "5.0.0-beta.29",
     "react": "19.1.0",
     "react-dom": "19.1.0",

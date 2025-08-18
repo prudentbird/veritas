@@ -25,12 +25,14 @@ export const UserBadge = ({
       <div className="flex items-center gap-3">
         <Avatar onClick={() => setIsCollapsed(!isCollapsed)}>
           <AvatarImage src={avatar} />
-          <AvatarFallback>{session?.address.slice(0, 2)}</AvatarFallback>
+          <AvatarFallback>{session?.user?.address?.slice(0, 2)}</AvatarFallback>
         </Avatar>
         {!isCollapsed && (
           <div className="flex flex-col">
             <span className="text-sm">tap to edit</span>
-            <span className="text-sm">{session?.address.slice(0, 16)}...</span>
+            <span className="text-sm">
+              {session?.user?.address?.slice(0, 16)}...
+            </span>
           </div>
         )}
       </div>

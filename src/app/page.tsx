@@ -12,7 +12,7 @@ export default async function Home() {
         {session ? (
           <div>
             <p className="text-center">
-              Authenticated With: <br /> {session?.address}
+              Authenticated With: <br /> {session?.user?.address}
             </p>
           </div>
         ) : (

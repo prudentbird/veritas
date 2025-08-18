@@ -1,19 +1,41 @@
-import { env } from "~/env";
-import NextAuth from "next-auth";
-import { authConfig } from "./auth.config";
 import {
-  getAddressFromMessage,
-  getChainIdFromMessage,
   SIWESession,
   verifySignature,
+  getChainIdFromMessage,
+  getAddressFromMessage,
 } from "@reown/appkit-siwe";
+import { env } from "~/env";
 import { authSchema } from "./schema";
+import { authConfig } from "./auth.config";
+import { fetchMutation } from "convex/nextjs";
+import { api } from "~/convex/_generated/api";
+import type { DefaultJWT } from "next-auth/jwt";
+import NextAuth, { type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 declare module "next-auth" {
   interface Session extends SIWESession {
+    user: {
+      id: string;
+      address: string;
+      chainId: string;
+    } & DefaultSession["user"];
+  }
+
+  interface User {
+    id: string;
     address: string;
-    chainId: number;
+    chainId: string;
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT extends DefaultJWT {
+    user: {
+      id: string;
+      address: string;
+      chainId: string;
+    };
   }
 }
 
@@ -56,15 +78,28 @@ export const {
         }
 
         return {
-          id: `${chainId}:${address}`,
+          id: address,
+          chainId,
+          address,
         };
       },
     }),
   ],
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      if (account?.provider === "credentials") {
+        await fetchMutation(api.users.authCreateUser, {
+          address: user.address,
+          chainId: user.chainId,
+        });
+      }
+
+      return !!user;
+    },
     async jwt({ token, user }) {
       if (user) {
-        token.sub = user.id;
+        token.user = user;
+        token.sub = user.address;
       }
 
       return token;
@@ -74,11 +109,11 @@ export const {
         return session;
       }
 
-      const [, chainId, address] = token.sub.split(":");
-      if (chainId && address) {
-        session.address = address;
-        session.chainId = parseInt(chainId, 10);
-      }
+      session.user = {
+        ...session.user,
+        address: token.user.address,
+        chainId: token.user.chainId,
+      };
 
       return session;
     },
