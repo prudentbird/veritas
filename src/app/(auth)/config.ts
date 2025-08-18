@@ -39,7 +39,7 @@ export const siweConfig = createSIWEConfig({
 
     return {
       address: session.user.address,
-      chainId: parseInt(session.user.chainId.split(":")[1]),
+      chainId: parseInt(session.user.chainId.split(":")[1], 10),
     } satisfies SIWESession;
   },
   verifyMessage: async ({ message, signature }: SIWEVerifyMessageArgs) => {
