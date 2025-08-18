@@ -32,14 +32,14 @@ export const siweConfig = createSIWEConfig({
 
     if (
       typeof session.user.address !== "string" ||
-      typeof session.user.chainId !== "number"
+      typeof session.user.chainId !== "string"
     ) {
       return null;
     }
 
     return {
       address: session.user.address,
-      chainId: session.user.chainId,
+      chainId: parseInt(session.user.chainId.split(":")[1]),
     } satisfies SIWESession;
   },
   verifyMessage: async ({ message, signature }: SIWEVerifyMessageArgs) => {
