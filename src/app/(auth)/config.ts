@@ -1,11 +1,11 @@
-import { getCsrfToken, getSession, signIn, signOut } from "next-auth/react";
 import type {
+  SIWESession,
   SIWEVerifyMessageArgs,
   SIWECreateMessageArgs,
-  SIWESession,
 } from "@reown/appkit-siwe";
 import { monadTestnet } from "@reown/appkit/networks";
 import { createSIWEConfig, formatMessage } from "@reown/appkit-siwe";
+import { getCsrfToken, getSession, signIn, signOut } from "next-auth/react";
 
 export const siweConfig = createSIWEConfig({
   getMessageParams: async () => ({
@@ -31,15 +31,15 @@ export const siweConfig = createSIWEConfig({
     }
 
     if (
-      typeof session.address !== "string" ||
-      typeof session.chainId !== "number"
+      typeof session.user.address !== "string" ||
+      typeof session.user.chainId !== "number"
     ) {
       return null;
     }
 
     return {
-      address: session.address,
-      chainId: session.chainId,
+      address: session.user.address,
+      chainId: session.user.chainId,
     } satisfies SIWESession;
   },
   verifyMessage: async ({ message, signature }: SIWEVerifyMessageArgs) => {
