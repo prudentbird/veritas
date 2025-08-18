@@ -86,7 +86,7 @@ export const {
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({ user, account }) {
       if (account?.provider === "credentials") {
         await fetchMutation(api.users.authCreateUser, {
           address: user.address,
